@@ -1,3 +1,4 @@
+import Button from "../Button";
 export const Auth = ()=>{
 const user = false;
 
@@ -8,10 +9,10 @@ const user = false;
   } 
 
     return(
-    <nav>
-      <ul>
-        <li>registro</li>
-        <li>acceso</li>
+    <nav className="auth-nav">
+      <ul className="auth-ul">
+        <li className="auth-li"><Button handleOnClick={""} text={"Registro"} /></li>
+        <li className="auth-li"><Button handleOnClick={""} text={"Acceso"} /></li>
       </ul>
     </nav>
     )
