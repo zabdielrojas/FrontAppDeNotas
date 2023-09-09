@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Button from "../Button";
 import registerUserService from "../../services/registerUserService";
 
 const RegisterForm = ({ setShowModal }) => {
@@ -10,23 +9,29 @@ const RegisterForm = ({ setShowModal }) => {
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
-      await registerUserService({ username, email, password });
-      setUsername("");
-      setEmail("");
-      setPassword("");
+
+      const response = await registerUserService({ username, email, password });
+
+      if (response.message) {
+        throw new Error(response.message);
+      } else {
+        setUsername("");
+        setEmail("");
+        setPassword("");
+        setShowModal(false);
+      }
     } catch (error) {
       console.error(error.message);
     }
-    setShowModal(false);
   };
 
   return (
     <form className="register-form" onSubmit={handleSubmit}>
-      <label hidden htmlFor="username" className="username">
+      <label hidden htmlFor="register-username" className="register-username">
         Username
       </label>
       <input
-        id="username"
+        id="register-username"
         type="username"
         value={username}
         onChange={(event) => {
@@ -35,11 +40,11 @@ const RegisterForm = ({ setShowModal }) => {
         placeholder="juan"
       />
 
-      <label hidden htmlFor="email" className="email">
+      <label hidden htmlFor="register-email" className="register-email">
         Email
       </label>
       <input
-        id="email"
+        id="register-email"
         type="email"
         value={email}
         onChange={(event) => {
@@ -48,12 +53,12 @@ const RegisterForm = ({ setShowModal }) => {
         placeholder="email@email.com"
       />
 
-      <label hidden htmlFor="password" className="password">
+      <label hidden htmlFor="register-password" className="register-password">
         {" "}
         Password
       </label>
       <input
-        id="password"
+        id="register-password"
         type="password"
         value={password}
         onChange={(event) => {

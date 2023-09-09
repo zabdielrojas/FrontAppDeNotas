@@ -1,8 +1,8 @@
 const registerUserService = async (registerData) => {
-  const { REACT_APP_BACKEND_PORT } = import.meta.env;
   const { username, email, password } = registerData;
 
   try {
+    console.log(" aqui ", import.meta.env);
     const res = await fetch(`http://localhost:8000/users`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },

@@ -14,7 +14,7 @@ export const TokenContextProvider = ({ children }) => {
 
   const navigate = useNavigate();
 
-   const {REACT_APP_BACKEND_PORT} = import.meta.env
+  //const {REACT_APP_BACKEND_PORT} = import.meta.env
 
   // useEffect para ejecutar despues del primer render y cada vez que cambia el token.
   useEffect(() => {
@@ -27,12 +27,9 @@ export const TokenContextProvider = ({ children }) => {
     // Si el token existe recogemos la información de la API y colocamos los datos recogidos en el estado "loggedUser".
     const fetchUserProfile = async () => {
       try {
-        const res = await fetch(
-          `http://localhost:${REACT_APP_BACKEND_PORT}/users`,
-          {
-            headers: { Authorization: token },
-          }
-        );
+        const res = await fetch(`http://localhost:8000/users`, {
+          headers: { Authorization: token },
+        });
 
         // Obtenemos la información del body de la respuesta.
         const body = await res.json();
@@ -53,7 +50,7 @@ export const TokenContextProvider = ({ children }) => {
     };
 
     fetchUserProfile();
-  }, [token, navigate, setToken,REACT_APP_BACKEND_PORT]);
+  }, [token, navigate, setToken]);
 
   return (
     <TokenContext.Provider
