@@ -3,16 +3,22 @@ import Button from "../Button";
 import Modal from "../Modal";
 import RegisterForm from "../RegisterForm/Index";
 import LoginForm from "../LoginForm/Index";
+import { useTokenContext } from "../../contexts/TokenContext";
 
 export const Auth = () => {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showRegisterModal, setShowRegisterModal] = useState(false);
-  const user = false;
+  const { token, setToken } = useTokenContext();
 
-  if (user) {
+  if (token) {
     return (
       <nav>
-        <link>cerrar sesión</link>
+        <Button
+          handleOnClick={() => {
+            setToken("");
+          }}
+          text={"Cerrar Sesión"}
+        />
       </nav>
     );
   }
