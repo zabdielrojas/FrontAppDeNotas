@@ -1,9 +1,14 @@
 import { Note } from "../../components/Note";
+import {Button} from "../../components/Button"
+import { useNotes } from "../../hooks/useNotes";
+import { useEffect } from "react";
 export const HomePage = () => {
-  return (
-    <main>
-      <Note note={{ title: "hola", text: "Hola buenas tardes soy una nota", image: "https://images.pexels.com/photos/5500232/pexels-photo-5500232.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" }} />
-    </main>
-  );
+ const {notes, error, loading} = useNotes()
+  return (<>
+    {loading&&<p>Cargando</p>}
+    {!loading&&<main>
+      {notes.length>0&&<Note note={notes} />}
+    </main>}
+    </> );
 };
 export default HomePage;

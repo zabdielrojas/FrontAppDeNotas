@@ -12,8 +12,8 @@ html.night-mode{  --main-button-color:rgb(154, 116, 242);
   padding: 10;
   list-style: none;
 }
-header {
-  border: 1px solid red;
-}
+
+
+img{max-width: 100px;}
 
 button.main-button{background-color: var(--main-button-color);}
