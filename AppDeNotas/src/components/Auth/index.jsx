@@ -1,15 +1,17 @@
 import { useState } from "react";
+import { useTokenContext } from "../../contexts/TokenContext";
+
 import Button from "../Button";
 import Modal from "../Modal";
 import RegisterForm from "../RegisterForm/Index";
 import LoginForm from "../LoginForm/Index";
-import { useTokenContext } from "../../contexts/TokenContext";
 
 export const Auth = () => {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showRegisterModal, setShowRegisterModal] = useState(false);
   const { token, setToken } = useTokenContext();
 
+   // Si existe el token y por lo tanto el usuario está loggeado mostramos este componente.
   if (token) {
     return (
       <nav>
@@ -22,7 +24,8 @@ export const Auth = () => {
       </nav>
     );
   }
-
+  
+ // Si el usuario no está loggeado se muestra este otro.
   return (
     <>
       <nav className="auth-nav">

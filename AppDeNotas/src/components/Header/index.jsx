@@ -11,7 +11,7 @@ export const Header = () => {
           <li>Otras más</li>
         </ul>
       </nav>
-      <Auth></Auth>
+      <Auth />
     </header>
   );
 };

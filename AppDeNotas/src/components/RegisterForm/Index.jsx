@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import registerUserService from "../../services/registerUserService";
 
 const RegisterForm = ({ setShowModal }) => {
@@ -8,13 +9,17 @@ const RegisterForm = ({ setShowModal }) => {
 
   const handleSubmit = async (event) => {
     try {
+      // Esto evita la acción por defecto del evento submit.
       event.preventDefault();
 
+      // Hacemos la petición al back con los datos del formulario.
       const response = await registerUserService({ username, email, password });
 
-      if (response.message) {
+      // Si la petición no fue exitosa lanzamos un error.
+      if (response.status !== ("ok")) {
         throw new Error(response.message);
       } else {
+        // Si no reseteamos los campos y cerramos la modal.
         setUsername("");
         setEmail("");
         setPassword("");
@@ -54,7 +59,6 @@ const RegisterForm = ({ setShowModal }) => {
       />
 
       <label hidden htmlFor="register-password" className="register-password">
-        {" "}
         Password
       </label>
       <input
