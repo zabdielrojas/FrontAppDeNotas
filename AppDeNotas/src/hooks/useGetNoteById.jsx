@@ -3,8 +3,8 @@ import { useTokenContext } from "../contexts/TokenContext";
 import { useSearchParams } from "react-router-dom";
 
 
-export const useNotes = () => {
-  const [notes, setNotes] = useState([]);
+export const useGetNoteById = (id) => {
+  const [note, setNote] = useState({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -13,11 +13,10 @@ export const useNotes = () => {
 
   useEffect(() => {
     setLoading(true);
-    const requestUrl = `http://localhost:8000/notes`;
     try {
-      const getNotesService = async () => {
+      const getNoteByIdService = async () => {
         // Hacemos la petición al backend.
-        const res = await fetch("http://localhost:8000/notes", {
+        const res = await fetch(`http://localhost:8000/notes/${id}`, {
           headers: { Authorization: token}
         });
         // Guardamos el body de la respuesta en una variable.
@@ -28,14 +27,14 @@ export const useNotes = () => {
         }
 
         // Devolvemos el body de la respuesta.
-        setNotes([...body.data.notes]);
+        setNote(body.data);
       };
-      getNotesService();
+      getNoteByIdService();
     } catch (error) {
       setError(error.message);
     } finally {
       setLoading(false);
     }
-  }, [searchParams, token]);
-  return { loading, notes, setNotes, error, searchParams, setSearchParams };
+  }, [id, token]);
+  return { loading, note, setNote, error, searchParams, setSearchParams };
 };
