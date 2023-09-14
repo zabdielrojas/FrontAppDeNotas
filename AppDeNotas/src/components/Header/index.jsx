@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom";
 import Auth from "../Auth";
 
 export const Header = () => {
   return (
     <header>
-      <h1>App de notas</h1>
+      <h1><Link to={"/"}>App de notas</Link></h1>
       <nav className="categories">
         <ul>
           <li>Importante</li>
