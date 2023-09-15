@@ -1,3 +1,4 @@
+import "./style.css";
 import { useState } from "react";
 
 import registerUserService from "../../services/registerUserService";
@@ -16,7 +17,7 @@ const RegisterForm = ({ setShowModal }) => {
       const response = await registerUserService({ username, email, password });
 
       // Si la petición no fue exitosa lanzamos un error.
-      if (response.status !== ("ok")) {
+      if (response.status !== "ok") {
         throw new Error(response.message);
       } else {
         // Si no reseteamos los campos y cerramos la modal.

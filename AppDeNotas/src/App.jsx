@@ -1,3 +1,4 @@
+import "./App.css";
 import "./index.css";
 import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
@@ -10,7 +11,7 @@ import NewNoteForm from "./components/NewNoteForm";
 import Button from "./components/Button";
 
 function App() {
-const [showModal, setShowModal] = useState(false)
+  const [showModal, setShowModal] = useState(false);
   return (
     <>
       <Header></Header>
@@ -19,7 +20,19 @@ const [showModal, setShowModal] = useState(false)
         <Route path="/notes/:id" element={<NotePage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
-      <footer>{showModal&&<Modal setShowModal={setShowModal}><NewNoteForm setShowModal={setShowModal} /></Modal>}<Button text={"Nueva nota"} handleOnClick={()=>{setShowModal(true)}} /></footer>
+      <footer>
+        {showModal && (
+          <Modal setShowModal={setShowModal}>
+            <NewNoteForm setShowModal={setShowModal} />
+          </Modal>
+        )}
+        <Button
+          text={"Nueva nota"}
+          handleOnClick={() => {
+            setShowModal(true);
+          }}
+        />
+      </footer>
     </>
   );
 }

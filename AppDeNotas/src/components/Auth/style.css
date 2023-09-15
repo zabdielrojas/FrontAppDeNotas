@@ -1,0 +1,6 @@
+ul.auth-ul {
+  display: flex;
+}
+li.auth-li {
+  margin: 0.75rem 0.6rem;
+}
