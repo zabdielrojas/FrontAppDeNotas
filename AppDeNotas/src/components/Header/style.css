@@ -2,7 +2,7 @@ header.main-header {
   background-color: var(--header-background-color);
   display: flex;
   justify-content: space-around;
-  align-content: center;
+  align-items: center;
   color: var(--secondary-text-color);
 }
 header.main-header > h1 {

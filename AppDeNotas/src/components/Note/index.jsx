@@ -1,5 +1,6 @@
+import "./style.css";
 import Button from "../Button";
-import { useState} from "react";
+import { useState } from "react";
 import { useTokenContext } from "../../contexts/TokenContext";
 import { useLocation } from "react-router-dom";
 
@@ -22,7 +23,7 @@ export const Note = ({ note }) => {
     }
     setIsPublicNote(body.data.is_public);
   };
- 
+
   return (
     <article className="note-article">
       <header className="note-header">
@@ -30,16 +31,14 @@ export const Note = ({ note }) => {
 
         {location.pathname === `/notes/${id}` && (
           <button
-            onClick={()=>{
-              toggleIsPublic()
+            onClick={() => {
+              toggleIsPublic();
             }}
-          >{isPublicNote ? "Pública" : "Privada"}</button>
+          >
+            {isPublicNote ? "Pública" : "Privada"}
+          </button>
         )}
-        {isPublicNote === true && (
-          <li>
-            <Button text={"Compartir"} />
-          </li>
-        )}
+        {isPublicNote === true && <Button text={"Compartir"} />}
       </header>
       <section className="note-section">
         {image && <img src={`http://localhost:8000/${image}`} />}

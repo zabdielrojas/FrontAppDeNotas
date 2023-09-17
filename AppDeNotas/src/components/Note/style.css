@@ -1,0 +1,21 @@
+article.note-article {
+  margin-top: 1.2em;
+  border-radius: 0.5em;
+  width: 30vw;
+  background-color: var(--main-background-color);
+}
+article.note-article > header {
+  padding: 0.8em;
+}
+section.note-section {
+  width: 100%;
+}
+section.note-section > img {
+  object-fit: contain;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+.list-notes-link {
+  text-decoration: none;
+  color: var(--secondary-text-color);
+}

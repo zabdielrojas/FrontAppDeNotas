@@ -14,14 +14,11 @@ html.night-mode {
 }
 
 * {
+  padding-inline-start: 0%;
   box-sizing: border-box;
   margin: 0;
   padding: 10;
   list-style: none;
-}
-
-img {
-  max-width: 100px;
 }
 
 button.main-button {

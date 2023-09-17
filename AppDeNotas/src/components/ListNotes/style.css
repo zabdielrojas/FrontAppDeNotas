@@ -1,0 +1,6 @@
+ul.list-notes-ul {
+  display: flex;
+  justify-content: center;
+  flex: row wrap;
+  gap: 1.2em;
+}
