@@ -1,12 +1,14 @@
 import { useState, useRef } from "react";
+import "./style.css";
+import uploadIcon from "../../assets/24px.svg";
 import { useNavigate } from "react-router-dom";
 import { useTokenContext } from "../../contexts/TokenContext";
 
 const NewNoteForm = ({ setShowModal }) => {
   const [noteTitle, setNoteTitle] = useState("");
   const [noteText, setNoteText] = useState("");
-  const [noteCategory, setNoteCategory] = useState("Otras");
-  const [uploadImageText, setUploadImageText] = useState("¡Sube una foto!")
+  const [noteCategory, setNoteCategory] = useState("Categoria");
+  const [uploadImageText, setUploadImageText] = useState("¡Sube una foto!");
   const { token } = useTokenContext();
 
   const noteImageRef = useRef();
@@ -79,11 +81,12 @@ const NewNoteForm = ({ setShowModal }) => {
       />
 
       <label className="new-note-image" htmlFor="new-note-image">
-        <p>
+        <p className="new-note-image-p">
           {uploadImageText.length <= 30
             ? uploadImageText
             : uploadImageText.substring(0, 30) + "..."}
         </p>
+        <img className="new-note-image-icon" src={uploadIcon} />
       </label>
 
       <input
@@ -98,21 +101,20 @@ const NewNoteForm = ({ setShowModal }) => {
       />
 
       <label className="new-note-category" htmlFor="new-note-category">
-        Categoría
+        <select
+          value={noteCategory}
+          onChange={(event) => {
+            setNoteCategory(event.target.value);
+          }}
+          id="new-note-category"
+        >
+          <option value={""}>Categoria</option>
+          <option value={"Otras"}>Otras</option>
+          <option value={"importantes"}>Importantes</option>
+          <option value={"emergencia"}>Emergencia</option>
+          <option value={"citas"}>Citas</option>
+        </select>
       </label>
-
-      <select
-        value={noteCategory}
-        onChange={(event) => {
-          setNoteCategory(event.target.value);
-        }}
-        id="new-note-category"
-      >
-        <option value={"Otras"}>Otras</option>
-        <option value={"importantes"}>Importantes</option>
-        <option value={"emergencia"}>Emergencia</option>
-        <option value={"citas"}>Citas</option>
-      </select>
 
       <button>Crear</button>
     </form>
