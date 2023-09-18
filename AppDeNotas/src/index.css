@@ -7,8 +7,10 @@ html {
   --main-button-color: rgb(255, 215, 61);
   --main-font: roboto, sans-serif;
   --logo-font: "Bebas Neue";
+  width: 100%;
+  overflow-x: hidden;
 }
-
+html,body{height: 100%;}
 html.night-mode {
   --main-button-color: rgb(154, 116, 242);
 }

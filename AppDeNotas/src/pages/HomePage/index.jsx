@@ -1,3 +1,4 @@
+import "./style.css"
 import { ListNotes } from "../../components/ListNotes";
 import {Button} from "../../components/Button"
 import { useGetNotes } from "../../hooks/useGetNotes";

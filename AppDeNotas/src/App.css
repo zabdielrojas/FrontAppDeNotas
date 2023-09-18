@@ -1,5 +1,16 @@
 body {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   font-family: roboto, sans-serif;
+
 }
+div#root
+{
+flex-grow: 1;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+}
+footer{max-width: 10vw;}

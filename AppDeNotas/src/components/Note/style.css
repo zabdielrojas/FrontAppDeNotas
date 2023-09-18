@@ -1,18 +1,26 @@
 article.note-article {
   margin-top: 1.2em;
   border-radius: 0.5em;
-  width: 30vw;
+  min-width: 30vw;
+  max-width: 90vw;
   background-color: var(--main-background-color);
+  min-height: 25vw;
 }
 article.note-article > header {
-  padding: 0.8em;
+ padding: 0.8em;
+ display: flex;
+ justify-content: space-between;
+}
+
+article.note-article > header > h2 {
+ color: var(--main-button-color); 
 }
 section.note-section {
-  width: 100%;
+  color: var(--secondary-text-color);
 }
 section.note-section > img {
   object-fit: contain;
-  width: 100%;
+  max-width: 100%;
   margin-bottom: 1rem;
 }
 .list-notes-link {

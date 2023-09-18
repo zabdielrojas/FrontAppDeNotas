@@ -1,0 +1,36 @@
+section.note-page-section{
+    display: flex;
+    flex-grow: 1;
+}
+article.note-article.note-page {
+    flex-grow: 1;
+    margin-top: 0;
+    border-radius: 0;
+    min-width: 100%;
+    max-width: 100%;
+    background-color: var(--main-background-color);
+    min-height: 100%;
+  }
+
+article.note-article.note-page > header {
+  padding: 0.8em;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8em;
+}
+
+article.note-article.note-page > header > h2 {
+  color: var(--main-button-color);
+  flex-grow: 1;
+}
+
+article.note-article.note-page > section.note-section p {
+  margin-left: 0.8em;
+  margin-right: 0.8em;
+  margin-bottom: 1em;
+}
+article.note-article.note-page > section.note-section > img {
+  object-fit: contain;
+  width: 100%;
+  margin-bottom: 1rem;
+}
