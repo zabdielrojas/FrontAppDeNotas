@@ -102,11 +102,11 @@ const NewNoteForm = ({ setShowModal }) => {
 
       <label className="new-note-category" htmlFor="new-note-category">
         <select
+          id="new-note-category"
           value={noteCategory}
           onChange={(event) => {
             setNoteCategory(event.target.value);
           }}
-          id="new-note-category"
         >
           <option value={""}>Categoria</option>
           <option value={"Otras"}>Otras</option>
