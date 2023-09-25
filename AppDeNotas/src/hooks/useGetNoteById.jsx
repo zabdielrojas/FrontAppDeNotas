@@ -25,7 +25,7 @@ export const useGetNoteById = (id) => {
         if (res.status !== 200) {
           throw new Error();
         }
-
+  
         // Devolvemos el body de la respuesta.
         setNote(body.data);
       };
