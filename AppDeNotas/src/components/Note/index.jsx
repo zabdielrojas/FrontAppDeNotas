@@ -11,7 +11,9 @@ export const Note = ({ note, className }) => {
   const [isPublicNote, setIsPublicNote] = useState(is_public);
   const location = useLocation();
 
-  useEffect(()=>{setIsPublicNote(is_public)},[is_public])
+  useEffect(() => {
+    setIsPublicNote(is_public);
+  }, [is_public]);
   const toggleIsPublic = async (event) => {
     const res = await fetch(`http://localhost:8000/notes/${id}`, {
       method: "PUT",
@@ -39,7 +41,7 @@ export const Note = ({ note, className }) => {
           >
             {isPublicNote ? "Pública" : "Privada"}
           </button>
-          {isPublicNote && <Button text={"Compartir"} />}
+          {isPublicNote == true && <Button text={"Compartir"} />}
         </header>
         <section className="note-section">
           {text && <p className="note-p">{text}</p>}
