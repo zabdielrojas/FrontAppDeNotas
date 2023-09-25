@@ -8,7 +8,7 @@ export const Note = ({ note, className }) => {
   const { token } = useTokenContext();
   const { id, title, text, image, is_public } = note;
   console.log(is_public);
-  const [isPublicNote, setIsPublicNote] = useState(note?.is_public);
+  const [isPublicNote, setIsPublicNote] = useState(is_public);
   const location = useLocation();
 
   useEffect(()=>{setIsPublicNote(is_public)},[is_public])
@@ -27,16 +27,18 @@ export const Note = ({ note, className }) => {
   };
 
   if (location.pathname === `/notes/${id}`) {
+    console.log(isPublicNote);
     return (
       <article className={`note-article ${className}`}>
         <header className="note-header">
           <h2>{title}</h2>
-          <Button
-            handleOnClick={() => {
+          <button
+            onClick={() => {
               toggleIsPublic();
             }}
-            text={isPublicNote?"Pública": "Privada"}
-          />
+          >
+            {isPublicNote ? "Pública" : "Privada"}
+          </button>
           {isPublicNote && <Button text={"Compartir"} />}
         </header>
         <section className="note-section">
