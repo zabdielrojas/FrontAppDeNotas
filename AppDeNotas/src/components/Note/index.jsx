@@ -6,7 +6,7 @@ import { useLocation } from "react-router-dom";
 
 export const Note = ({ note, className }) => {
   const { token } = useTokenContext();
-  const { id, title, text, image, is_public } = note;
+  const { id, title, text, image, is_public, uuid } = note;
   console.log(is_public);
   const [isPublicNote, setIsPublicNote] = useState(is_public);
   const location = useLocation();
@@ -41,7 +41,9 @@ export const Note = ({ note, className }) => {
           >
             {isPublicNote ? "Pública" : "Privada"}
           </button>
-          {isPublicNote == true && <Button text={"Compartir"} />}
+          {isPublicNote == true && <Button handleOnClick={(event)=>{
+              navigator.clipboard.writeText(`http://localhost:5173/notes/public/${uuid}`)
+          }} text={"Compartir"} />}
         </header>
         <section className="note-section">
           {text && <p className="note-p">{text}</p>}
@@ -50,7 +52,6 @@ export const Note = ({ note, className }) => {
       </article>
     );
   }
-
   return (
     <article className={`note-article ${className}`}>
       <header className="note-header">
