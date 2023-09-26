@@ -1,29 +1,27 @@
 import { useState } from "react";
-
-import loginUserService from "../../services/loginUserService";
 import { useTokenContext } from "../../contexts/TokenContext";
 import { toast } from "react-toastify";
-const LoginForm = ({ setShowModal }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const { setToken } = useTokenContext();
-
+import "./style.css"
+import editUserService from "../../services/editUserService";
+const EditUserForm = ({ setShowModal,setCurrentUsername }) => {
+  const [username, setUsername] = useState("");
+ const [email, setEmail] = useState("")
+ const {token}= useTokenContext()
   const handleSubmit = async (event) => {
     try {
       // Esto evita el  comportamiento por defecto del evento submit.
       event.preventDefault();
       // Hacemos la petición  al backend y guardamos la respuesta en una variable.
-      const response = await loginUserService({ email, password });
+      const response = await editUserService({ email,username }, token);
 
       // Si la respuesta no es ok lanzamos un error.
       if (response.status !== "ok") {
         throw new Error(response.message);
       }
-      // Si no guardamos el token en local storage y reseteamos los campos y cerramos la modal.
-      setToken(response.data.token);
+      // Si lo es reseteamos los campos y cerramos la modal.
       setEmail("");
-      setPassword("");
+      setCurrentUsername(username)
+      setUsername("")
       setShowModal(false);
     } catch (error) {
       toast.error(error.message);
@@ -31,12 +29,12 @@ const LoginForm = ({ setShowModal }) => {
   };
 
   return (
-    <form className="login-form" onSubmit={handleSubmit}>
-      <label hidden htmlFor="login-email" className="login-email">
+    <form className="edit-user-form" onSubmit={handleSubmit}>
+      <label hidden htmlFor="edit-user-email" className="edit-user-email">
         Email
       </label>
       <input
-        id="login-email"
+        id="edit-user-email"
         type="email"
         value={email}
         onChange={(event) => {
@@ -45,22 +43,20 @@ const LoginForm = ({ setShowModal }) => {
         placeholder="email@email.com"
       />
 
-      <label hidden htmlFor="login-password" className="login-password">
-        {" "}
-        Password
+      <label hidden htmlFor="edit-user-username" className="edit-user-username">
+        Username
       </label>
       <input
-        id="login-password"
-        type="password"
-        value={password}
+        id="edit-user-username"
+        type="text"
+        value={username}
         onChange={(event) => {
-          setPassword(event.target.value);
+          setUsername(event.target.value);
         }}
-        placeholder="*******"
+        placeholder="Usuario"
       />
-
-      <button>Accede</button>
+      <button>Editar</button>
     </form>
   );
 };
-export default LoginForm;
+export default EditUserForm;

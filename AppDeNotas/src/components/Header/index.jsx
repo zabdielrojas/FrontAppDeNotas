@@ -1,8 +1,9 @@
 import "./style.css";
 import { Link } from "react-router-dom";
 import Auth from "../Auth";
-
+import { useState } from "react";
 export const Header = () => {
+  const [currentUsername, setCurrentUsername] = useState();
   return (
     <header className="main-header">
       <h1>
@@ -11,7 +12,7 @@ export const Header = () => {
         </Link>
       </h1>
 
-      <Auth />
+      <Auth currentUsername={currentUsername} setCurrentUsername={setCurrentUsername} />
     </header>
   );
 };

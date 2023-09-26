@@ -3,11 +3,12 @@ import "./style.css";
 import uploadIcon from "../../assets/24px.svg";
 import { useNavigate } from "react-router-dom";
 import { useTokenContext } from "../../contexts/TokenContext";
+import { toast } from "react-toastify";
 
 const NewNoteForm = ({ setShowModal }) => {
   const [noteTitle, setNoteTitle] = useState("");
   const [noteText, setNoteText] = useState("");
-  const [noteCategory, setNoteCategory] = useState("Categoria");
+  const [noteCategory, setNoteCategory] = useState("Categoría");
   const [uploadImageText, setUploadImageText] = useState("¡Sube una foto!");
   const { token } = useTokenContext();
 
@@ -32,7 +33,10 @@ const NewNoteForm = ({ setShowModal }) => {
           formData.set("image", image);
         }
       }
-
+      if(noteCategory === "Categoría"){
+        toast.warning("¡Selecciona una categoría!")
+        return
+      }
       const res = await fetch(`http://localhost:8000/notes`, {
         method: "POST",
         headers: { Authorization: token },
@@ -47,9 +51,10 @@ const NewNoteForm = ({ setShowModal }) => {
       setNoteText("");
       setNoteCategory("");
       setShowModal(false);
+      toast.success("Nota creada")
       navigate(`/notes/${body.data.id}`);
     } catch (error) {
-      console.error(error.message);
+      toast.error(error.message);
     }
   };
 
@@ -108,7 +113,7 @@ const NewNoteForm = ({ setShowModal }) => {
             setNoteCategory(event.target.value);
           }}
         >
-          <option value={""}>Categoria</option>
+          <option value={"Categoría"}>Categoría</option>
           <option value={"Otras"}>Otras</option>
           <option value={"importantes"}>Importantes</option>
           <option value={"emergencia"}>Emergencia</option>

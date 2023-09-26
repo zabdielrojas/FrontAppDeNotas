@@ -5,7 +5,7 @@ form {
   align-items: center;
 }
 
-.register-form input,
+.edit-user-form input,.register-form input,
 .login-form input,
 .new-note-form input {
   margin-bottom: 1.2em;
@@ -14,13 +14,13 @@ form {
   border-color: rgb(226, 226, 226);
   min-width: 100%;
 }
-.register-form input:focus,
+.edit-user-form input:focus,.register-form input:focus,
 .login-form input:focus,
 .new-note-form input:focus {
   outline-color: var(--main-button-color);
 }
 
-.register-form button,
+.edit-user-form button,.register-form button,
 .login-form button,
 .new-note-form button {
   margin-top: 1.5em;

@@ -1,6 +1,6 @@
 import "./style.css";
 import { useState } from "react";
-
+import { toast } from "react-toastify";
 import registerUserService from "../../services/registerUserService";
 
 const RegisterForm = ({ setShowModal }) => {
@@ -17,7 +17,7 @@ const RegisterForm = ({ setShowModal }) => {
       const response = await registerUserService({ username, email, password });
 
       // Si la petición no fue exitosa lanzamos un error.
-      if (response.status !== "ok") {
+      if (response.status !== "Created") {
         throw new Error(response.message);
       } else {
         // Si no reseteamos los campos y cerramos la modal.
@@ -25,9 +25,10 @@ const RegisterForm = ({ setShowModal }) => {
         setEmail("");
         setPassword("");
         setShowModal(false);
+        toast.success("¡Te has registrado!")
       }
     } catch (error) {
-      console.error(error.message);
+      toast.error(error.message);
     }
   };
 
