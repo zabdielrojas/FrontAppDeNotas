@@ -11,7 +11,13 @@ article.note-article.note-page {
     background-color: var(--main-background-color);
     min-height: 100%;
   }
-
+section.note-page-section>button{
+  position: fixed;
+  height: min-content;
+  bottom: 2vh;
+  right: 5vw;
+  z-index: 9000;
+}
 article.note-article.note-page > header {
   padding: 0.8em;
   display: flex;

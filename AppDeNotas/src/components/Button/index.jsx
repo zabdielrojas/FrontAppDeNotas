@@ -1,6 +1,6 @@
 import "./style.css";
 
-export const Button = ({ handleOnClick, text }) => {
+export const Button = ({handleOnClick, text }) => {
   return <button onClick={handleOnClick}>{text}</button>;
 };
 export default Button;

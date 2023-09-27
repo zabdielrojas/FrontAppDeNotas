@@ -35,6 +35,6 @@ export const useGetNoteById = (id) => {
     } finally {
       setLoading(false);
     }
-  }, [id, token]);
+  }, [id, token, note]);
   return { loading, note, setNote, error, searchParams, setSearchParams };
 };
