@@ -8,4 +8,25 @@ ul.list-notes-ul {
 
 ul.list-notes-ul>li{
   min-width: 300px;
+  width: 100%;
   max-width: 90vw}
+
+
+@media (min-width:600px){
+
+  
+  ul.list-notes-ul {
+    display: flex;
+    justify-content: flex-start;
+    max-width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.2em;
+    align-items: flex-start;
+  }
+
+  ul.list-notes-ul>li{
+    min-width: 200px;
+    max-width: 30vw;
+    }
+}

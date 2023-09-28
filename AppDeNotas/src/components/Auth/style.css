@@ -1,7 +1,9 @@
 ul.auth-ul {
   display: flex;
-  align-items: center;
+  align-items: space-between;
 }
 li.auth-li {
   margin: 0.75rem 0.6rem;
 }
+
+nav.auth-nav.logged{ display: flex;gap: .5em;}

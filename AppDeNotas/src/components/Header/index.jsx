@@ -11,7 +11,6 @@ export const Header = () => {
           APP DE NOTAS
         </Link>
       </h1>
-
       <Auth currentUsername={currentUsername} setCurrentUsername={setCurrentUsername} />
     </header>
   );

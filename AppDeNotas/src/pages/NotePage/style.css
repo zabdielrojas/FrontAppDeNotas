@@ -1,5 +1,7 @@
 section.note-page-section{
     display: flex;
+    flex-direction: column;
+    align-items: center;
     flex-grow: 1;
 }
 article.note-article.note-page {
@@ -14,8 +16,7 @@ article.note-article.note-page {
 section.note-page-section>button{
   position: fixed;
   height: min-content;
-  bottom: 2vh;
-  right: 5vw;
+  bottom: 12vh;
   z-index: 9000;
 }
 article.note-article.note-page > header {
@@ -39,4 +40,15 @@ article.note-article.note-page > section.note-section > img {
   object-fit: contain;
   width: 100%;
   margin-bottom: 1rem;
+}
+
+@media(min-width: 600px){
+  section.note-page-section{
+    align-self: center;
+    width: 60vw;
+}
+article.note-article.note-page > section.note-section > img {
+  margin-top: 2em;
+  width: 32%;
+}
 }

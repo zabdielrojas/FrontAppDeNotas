@@ -5,23 +5,37 @@ article.note-article {
   max-width: 90vw;
   background-color: var(--main-background-color);
   min-height: 25vw;
+  display: flex;
+  flex-direction: column;
+  align-items: space-around;
 }
 article.note-article > header {
  padding: 0.8em;
  display: flex;
+ align-items: center;
  justify-content: space-between;
 }
 
 article.note-article > header > h2 {
  color: var(--main-button-color); 
+ flex-grow: 1;
 }
 section.note-section {
   color: var(--secondary-text-color);
+  display:flex;
+  flex-direction: column;
 }
-section.note-section > img {
+article.note-article section.note-section > img {
   object-fit: contain;
-  max-width: 100%;
+  width: 100%;
   margin-bottom: 1rem;
+}
+article.note-article.note-page section.note-section > img {
+  object-fit: contain;
+  align-self: center;
+  max-width: 60%;
+  margin-bottom: 1rem;
+  border-radius: 1em;
 }
 .list-notes-link {
   text-decoration: none;

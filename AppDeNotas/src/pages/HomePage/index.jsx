@@ -9,14 +9,20 @@ export const HomePage = () => {
   const { notes, error, loading, setSearchParams } = useGetNotes();
   const [category, setCategory] = useState("Todas");
   if (!token) {
-    return;
+    return (
+      <main className="no-logged-main">
+        <header className="welcoming-header">
+          <h1>¡Bienvenido!</h1>
+        </header>
+        <p className="welcoming-p">¡Regístrate para empezar a crear!</p>
+      </main>
+    );
   }
-  <></>; // To do: rellenar con algo.
   return (
     <>
       {loading && <p>Cargando</p>}
       {!loading && (
-        <main>
+        <main className="logged-main">
           <header>
             <div className="new-note-category">
               <select
@@ -35,7 +41,7 @@ export const HomePage = () => {
               </select>
             </div>
           </header>
-          {notes.length > 0 ? <ListNotes notes={notes} /> : <p>No hay notas</p>}
+          {notes.length > 0 ? <ListNotes notes={notes} /> : <h2 className="no-notes-h2">No hay notas</h2>}
         </main>
       )}
     </>

@@ -8,12 +8,13 @@ import RegisterForm from "../RegisterForm/Index";
 import LoginForm from "../LoginForm/Index";
 import EditUserForm from "../EditUserForm";
 import { toast } from "react-toastify";
+
 export const Auth = ({currentUsername,setCurrentUsername}) => {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showRegisterModal, setShowRegisterModal] = useState(false);
   const [showEditUserModal,setShowEditUserModal] = useState(false);
   const { token, setToken, loggedUser } = useTokenContext();
- 
+ useEffect(()=>{setCurrentUsername(loggedUser.username)},[currentUsername,loggedUser.username,setCurrentUsername])
   // Si existe el token y por lo tanto el usuario está loggeado mostramos este componente.
   if (token) {
     return (<>

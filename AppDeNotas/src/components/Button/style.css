@@ -1,7 +1,10 @@
 button {
   border: none;
-  padding: 0.37rem 0.75rem;
-  border-radius: 1rem;
+  padding: 0.37em 0.75em;
+  border-radius: 1em;
   background-color: var(--main-button-color);
   font-weight: 700;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
+button:hover{filter:brightness(.6)}
+button:active{box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;}
