@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 const registerUserService = async (registerData) => {
 
   const { username, email, password } = registerData;
@@ -20,7 +21,7 @@ const registerUserService = async (registerData) => {
     // Devolvemos el body de la respuesta.
     return body;
   } catch (error) {
-    console.error(error);
+    toast.error(error);
     return error;
   }
 };

@@ -24,10 +24,7 @@ main.no-logged-main {
     rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
     rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 }
-h2.no-notes-h2 {
-  align-self: center;
-  justify-self: center;
-}
+
 
 main.logged- > header {
   margin: 1.2em;
@@ -39,7 +36,17 @@ main.logged- > header {
 div.new-note-category {
   justify-content: flex-start;
 }
-section.list-notes-section{flex-grow: 1;}
+section.list-notes-section{
+  display: flex;
+  flex: row wrap;
+  flex-grow: 1;}
+
+  h2.no-notes-h2 {
+    flex-grow: 1;
+    text-align: center;
+    align-self: center;
+    justify-self: center;
+  }
 .copyright {
   justify-self: flex-end;
   align-self: center;

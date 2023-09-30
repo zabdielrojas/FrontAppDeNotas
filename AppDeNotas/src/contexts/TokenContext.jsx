@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { useNavigate } from "react-router-dom";
-
+import { toast } from "react-toastify";
 // Creamos un contexto para hacer el token accesible a todos los componentes de la App.
 export const TokenContext = createContext();
 
@@ -43,7 +43,7 @@ export const TokenContextProvider = ({ children }) => {
         setLoggedUser({ ...body.data.user });
       } catch (error) {
         //si hay algun error cargando los datos del usuario logueado lanzamos una alerta.
-        console.error(error);
+        toast.error(error);
         setToken("");
         navigate("/");
       }

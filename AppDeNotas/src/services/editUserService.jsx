@@ -1,4 +1,5 @@
  import { useTokenContext } from "../contexts/TokenContext";
+  import { toast } from "react-toastify";
 const editUserService = async (editUserData, token) => {
     const { email, username } = editUserData;
 
@@ -20,7 +21,7 @@ const editUserService = async (editUserData, token) => {
       // Devolvemos el body de la respuesta.
       return body;
     } catch (error) {
-      console.error(error);
+      toast.error(error);
       return error;
     }
   };

@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 const loginUserService = async (loginData) => {
   const { email, password } = loginData;
 
@@ -19,7 +20,7 @@ const loginUserService = async (loginData) => {
     // Devolvemos el body de la respuesta.
     return body;
   } catch (error) {
-    console.error(error);
+    toast.error(error);
     return error;
   }
 };

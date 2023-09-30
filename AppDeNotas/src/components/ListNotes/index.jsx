@@ -2,7 +2,6 @@ import "./style.css";
 import { Note } from "../Note";
 import { Link } from "react-router-dom";
 export const ListNotes = ({ notes }) => {
-  console.log(notes);
   return (
     <ul className="list-notes-ul">
       {notes.map((note) => {
