@@ -15,6 +15,7 @@ export const HomePage = () => {
           <h1>¡Bienvenido!</h1>
         </header>
         <p className="welcoming-p">¡Regístrate para empezar a crear!</p>
+        <section className="copyright"><p>© Hecho por <a href="https://github.com/zabdielrojas" >Zabdiel</a> y <a href="https://github.com/Aridey08" >Arianna</a></p></section>
       </main>
     );
   }
@@ -41,7 +42,8 @@ export const HomePage = () => {
               </select>
             </div>
           </header>
-          {notes.length > 0 ? <ListNotes notes={notes} /> : <h2 className="no-notes-h2">No hay notas</h2>}
+          <section className="list-notes-section">{notes.length > 0 ? <ListNotes notes={notes} /> : <h2 className="no-notes-h2">No hay notas</h2>}</section>
+          <section className="copyright"><p>© Hecho por <a href="https://github.com/zabdielrojas" >Zabdiel</a> y <a href="https://github.com/Aridey08" >Arianna</a></p></section>
         </main>
       )}
     </>
